@@ -27,7 +27,15 @@
         $res= wordwrap($t,20,"<br/>");
         echo $res;
         $tamanho=strlen($t);
-        echo $tamanho
+        echo "<br>$tamanho</br>";
+
+        $nome = "Iago Barros";
+        echo "Seu nome é ".strtolower($nome);
+        //strtoupper
+
+        $nome2 = "iago barros";
+        echo "Seu nome é ".ucwords($nome2);
+
 
 
         ?>
