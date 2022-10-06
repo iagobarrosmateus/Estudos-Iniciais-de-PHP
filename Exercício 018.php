@@ -10,9 +10,10 @@
 <body>
     <div>
         <?php
-        $n=array(3,5,8,2);
+        $n=array(30,5,90,8,2);
         $n[]=7;//adiciona elementos
         unset($n[2]);// desaloca posições
+        sort($n);
         print_r($n);      
         
         $c=range(5,20,5);//outra forma de declarar vetores
@@ -28,6 +29,14 @@
         // criar matizes
         $p=array(array(2,3),array(3,4),array(9,5));
         print_r($p);
+
+        $t=array("a","b","c","d");
+        echo " O vetor tem ". count($t). " elementos ";
+        print_r($t);
+        array_push($t, "o");
+        array_unshift($t,"u");
+        print_r($t);
+        
         ?>
     </div>
 </body>
