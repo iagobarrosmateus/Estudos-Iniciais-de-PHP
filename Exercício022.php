@@ -26,21 +26,47 @@ class ContaBanco{
             $this->setStatus(false);
         }        
     }
-    public function depositar(){
-
+    public function depositar($v){
+            if($this->getStatus()){
+                $this->setSaldo($this->getSaldo()+$v);
+                $this->saldo=$this->saldo+$v;
+            }else{
+                echo "<p>Conta fechada.</p>";
+            }
     }
-    public function sacar(){
-
+    public function sacar($v){
+            if($this->getStatus()){
+                if($this->getSaldo()>=$v){
+                    //$this->saldo=$this->saldo-$v;
+                    $this->setSaldo($this->getSaldo()-$v);
+                }else{
+                    echo "<p>Saldo insuficiente</p>";
+                }
+                }else{
+                    echo "<p>Não posso sacar de uma conta fechada</p>";
+            }
     }
     public function pagarMensal(){
-
+        if ($this->getTipo()=="CC"){
+            $v=12;
+        }else if($this->getTipo()=="CP"){
+            $v=20;
+        }
+        if($this->getStatus()){
+            $this->setSaldo($this->getSaldo()-$v);
+        }else{
+            echo "<p>Problemas com a conta</p>";
+        }
     }
 
     //Métodos Especiais
 
-    function construct(){
-
-    }
+    function __construct(){
+        $this->setSaldo(0);
+        $this->setSaldo(false);
+        echo "<p>Conta criada com sucesso</p>";
+    }       
+    
     function getNumConta(){
         return $this->numConta;
     }
