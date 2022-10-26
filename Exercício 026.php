@@ -67,10 +67,11 @@ class Lutador{
 
     function setPeso($peso){
         $this->peso=$peso;
+        $this->setCategoria();
     }
 
     private function setCategoria(){
-
+        $this->categoria=$categoria;
     }
 
     function getVitorias(){
