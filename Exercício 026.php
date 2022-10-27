@@ -11,30 +11,38 @@ class Lutador{
         $this->nacionalidade=$na;
         $this->idade=$id;
         $this->altura=$al;
-        $this->peso=$pe;
+        $this->setPeso($pe);
         $this->vitorias=$vi;
         $this->derrotas=$de;
         $this->empates=$em;
     }
 
     function apresentar(){
-
+        echo"<p>--------------------------</p>";
+        echo"<p>Chegou a hora! O lutador: </p>" . $this->getNome();
+        echo"veio diretamente de " . $this->getNacionalidade();
+        echo" tem " . $this->getIdade() . "anos e pesa " + $this->getPeso() . "KG";
+        echo"<br>Ele tem " . $this->getVitorias() . "Vitórias";
+        echo $this->getDerrotas() . "derrotas e " . $this->getEmpates() . "Empates";
     }
     
     function Status(){
-
+        echo"<p>--------------------------</p>";
+        echo"<p>" . $this->getNome() . " é um peso " . $this->getCategoria();
+        echo" tem " . $this->getVitorias() . " Vitórias ";
+        echo $this->getDerrotas() . " Derrotas e " . $this->getEmpates() . " Empates";
     }
     
     function ganharLuta(){
-
+        $this->setVitorias($this->getVitorias()+1);
     }
     
     function perderLuta(){
-
+        $this->setDerrotas($this->getDerrotas()+1);
     }
     
     function empatarLuta(){
-
+        $this->setEmpates($this->getEmpates()+1);
     }
 
     function getNome(){
@@ -51,6 +59,14 @@ class Lutador{
 
     function setNacionalidade($nacionalidade){
         $this->nacionalidade=$nacionalidade;
+    }
+
+    function getIdade(){
+        return $this->idade;
+    }
+
+    function setIdade($idade){
+        $this->idade=$idade;
     }
 
     function getAltura(){
@@ -70,8 +86,22 @@ class Lutador{
         $this->setCategoria();
     }
 
+    function getCategoria(){
+        return $this->categoria;
+    }
+
     private function setCategoria(){
-        $this->categoria=$categoria;
+        if($this->peso<52.2){
+            $this->categoria="Inválido";
+        }elseif($this->peso<=70.3){
+            $this->categoria="Leve";
+        }elseif($this->peso<=83.9){
+            $this->categoria="Médio";
+        }elseif($this->peso<=120.2){
+            $this->categoria="Pesado";
+        }else{
+            $this->categoria="Inválido";
+        }
     }
 
     function getVitorias(){
