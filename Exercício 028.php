@@ -1,4 +1,5 @@
 <?php
+require_once 'Exercício 026.php';
 class luta{
 
 private $desafiado;
@@ -6,20 +7,75 @@ private $desafiante;
 private $rounds;
 private $aprovada;
 
-function marcarLuta(){
-
+function marcarLuta($l1,$l2){
+    if($l1->getCategoria() === $l2->getCatgoria() && ($l1 != $l2)){
+        $this->aprovada=true;
+        $this->desafiado=$l1;
+        $this->desafiante=$l2;
+    }else{
+        $this->aprovada=false;
+        $this->desafiado=null;
+        $this->desafiante=null;
+    }
 }
 
 function lutar(){
-
+    if($this->aprovada){
+        $this->desafiado->apresentar();
+        $this->desafiante->apresentar();
+        $vencedor=rand(0,2);
+        switch($vencedor){
+            case 0: //empate
+                echo"<p>Empate!</p>";
+                $this->desafiado->empatarLuta();
+                $this->desafiante->empatarLuta();
+                break;
+            case 1: //Desafiado vence
+                echo"<p>". $this->desafiado->getNome(). "Venceu</p>";
+                $this->desafiado->ganharLuta();
+                $this->desafiante->perderLuta();
+                break;   
+            case 2: //Desafiante vence
+                echo "<p>".$this->desafiante->getNome()."Venceu</p>";
+                $this->desafiado->perderLuta();
+                $this->desafiante->ganharLuta();
+                break;    
+        }
+    }else{
+        echo "<p>Luta não pode acontecer</p>";
+    }
 }
 
-function setDesafiado(){
-    
+function setDesafiado($desafiado){
+    $this->desafiado=$desafiado;
 }
 
 function getDesafiado(){
+    return $this->desafiado;
+}
 
+function setDesafiante($desafiante){
+    $this->desafiante=$desafiante;
+}
+
+function getDesafiante(){
+    return $this->desafiante;
+}
+
+function setRounds($rounds){
+    $this->rounds=$rounds;
+}
+
+function getRounds(){
+    return $this->rounds;
+}
+
+function setAprovada($aprovada){
+    $this->aprovada=$aprovada;
+}
+
+function getAprovada(){
+    return $this->aprovada;
 }
 
 }
