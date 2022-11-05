@@ -10,13 +10,17 @@ class Livro implements Publicacao{
     private $leitor;
 
     function detalhes(){
-
+        echo "<br> Livro " . $this->titulo . " escrito por " . $this->autor;
+        echo "<br> Páginas: " . $this->totPaginas . " atual " . $this->pagAtual;
+        echo "<br> Sendo lido por " . $this->leitor->getNome() . "</br>";
     }
 
     function __construct($titulo, $autor, $totPaginas, $leitor){
         $this->titulo=$titulo;
         $this->autor=$autor;
         $this->totPaginas=$totPaginas;
+        $this->aberto=false;
+        $this->pagAtual=0;
         $this->leitor=$leitor;
     }
 
